@@ -1,0 +1,762 @@
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body
+ {
+  height: 100%;
+  width: 100%;
+  font-family: 'Nunito', sans-serif;
+  background-color: #7BAFD4; /* Light blue for non-dashboard pages in light mode */
+}
+
+/* ==========================================================================
+   SPLASH SCREEN
+   ========================================================================== */
+#splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #7BAFD4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.splash-content {
+  text-align: center;
+  color: #fff;
+  opacity: 1;
+  animation: fadeOut 1.5s ease forwards;
+  animation-delay: 3s;
+}
+
+.mascot {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+  animation: upScale 3s infinite alternate;
+}
+
+@keyframes upScale {
+  from { transform: scale(1); }
+  to   { transform: scale(1.2); }
+}
+
+.splash-content h1 {
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
+
+.splash-content p {
+  font-size: 2rem;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* ==========================================================================
+   DIALOGUE & FORM CONTAINERS 
+   (Login, Signup, Edit Habit, Habit Type, Create Habit, Stats, etc.)
+   ========================================================================== */
+.login-container,
+.signup-container,
+.edit-habit-container,
+.stats-container,
+.habit-type-container,
+.create-habit-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.login-container h1,
+.signup-container h1,
+.edit-habit-container h1,
+.stats-container h1,
+.habit-type-container h1,
+.create-habit-container h1 {
+  color: #4A90E2;  /* Updated blue for headings */
+  margin-bottom: 1rem;
+}
+
+.login-container form,
+.signup-container form,
+.edit-habit-container form,
+.stats-container form,
+.habit-type-container form,
+.create-habit-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container form input,
+.signup-container form input,
+.edit-habit-container form input,
+    stats-container form input,
+    .habit-type-container form input,
+    .create-habit-container form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.login-container form button,
+.signup-container form button,
+.edit-habit-container form button,
+    stats-container form button,
+    .habit-type-container form button,
+    .create-habit-container form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #638ECB;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-container form button:hover,
+.signup-container form button:hover,
+.edit-habit-container form button:hover,
+    stats-container form button:hover,
+    .habit-type-container form button:hover,
+    .create-habit-container form button:hover {
+  background-color: #557ca3;
+}
+
+.login-container p,
+.signup-container p {
+  margin-top: 1rem;
+}
+
+.login-container a,
+.signup-container a {
+  color: #638ECB;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.login-container a:hover,
+.signup-container a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   GLOBAL DARK MODE OVERRIDES FOR NON-DASHBOARD PAGES
+   ========================================================================== */
+html:not(.dashboard).dark-mode,
+body:not(.dashboard).dark-mode {
+  background-color: #111 !important;
+  color: #fff !important;
+}
+
+/* Force headers, navbars and any top strip on non-dashboard pages to dark */
+html:not(.dashboard).dark-mode header,
+html:not(.dashboard).dark-mode .navbar,
+body:not(.dashboard).dark-mode header,
+body:not(.dashboard).dark-mode .navbar,
+body:not(.dashboard).dark-mode .top-strip {
+  background-color: #111 !important;
+  color: #fff !important;
+}
+
+/* Override container backgrounds */
+body.dark-mode .login-container,
+body.dark-mode .signup-container,
+body.dark-mode .edit-habit-container,
+body.dark-mode .stats-container,
+body.dark-mode .habit-type-container,
+body.dark-mode .create-habit-container {
+  background-color: #222 !important;
+  color: #fff !important;
+}
+
+body.dark-mode .login-container h1,
+body.dark-mode .signup-container h1,
+body.dark-mode .edit-habit-container h1,
+body.dark-mode .stats-container h1,
+body.dark-mode .habit-type-container h1,
+body.dark-mode .create-habit-container h1 {
+  color: #fff !important;
+}
+
+body.dark-mode .login-container form input,
+body.dark-mode .signup-container form input,
+body.dark-mode .edit-habit-container form input,
+body.dark-mode .stats-container form input,
+body.dark-mode .habit-type-container form input,
+body.dark-mode .create-habit-container form input,
+body.dark-mode .login-container form textarea,
+body.dark-mode .signup-container form textarea,
+body.dark-mode .edit-habit-container form textarea,
+body.dark-mode .stats-container form textarea,
+body.dark-mode .habit-type-container form textarea,
+body.dark-mode .create-habit-container form textarea {
+  background-color: #333 !important;
+  color: #fff !important;
+  border: 1px solid #555 !important;
+}
+
+body.dark-mode a {
+  color: #638ECB !important;
+}
+
+body.dark-mode button {
+  background-color: #638ECB !important;
+  color: #fff !important;
+}
+
+body.dark-mode button:hover {
+  background-color: #557ca3 !important;
+}
+
+/* ==========================================================================
+   DASHBOARD BASE STYLES
+   (Dashboard pages must add the "dashboard" class to <html> and <body>)
+   ========================================================================== */
+html.dashboard,
+body.dashboard {
+  background-color: #e1e9f3;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body.dashboard {
+  color: #000;
+}
+
+/* Dashboard Navbar in Light Mode */
+body.dashboard .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #638ECB;  /* Light mode navbar background */
+  padding: 1rem 2rem;
+}
+
+body.dashboard .navbar .logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+body.dashboard .navbar .nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+body.dashboard .navbar .nav-links a,
+body.dashboard .navbar .nav-links button {
+  font-size: 1rem;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* Main Dashboard Layout */
+body.dashboard main {
+  padding: 2rem;
+}
+
+body.dashboard #habit-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   REVISED DASHBOARD HABIT CARD STYLING
+   ========================================================================== */
+body.dashboard .habit-card {
+  background-color: #fff;
+  padding: 0.75rem;
+  border-radius: 6px;
+  width: 220px;
+  margin: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 1px solid #638ECB;
+  position: relative;
+  overflow: hidden;
+}
+
+body.dashboard .habit-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+body.dashboard .habit-card p {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Hide "Today's Progress" and progress bar labels (Daily/Total) */
+body.dashboard .habit-card .todays-progress,
+body.dashboard .habit-card .progress-label {
+  display: none;
+}
+
+/* Progress Bar & Units (visible) */
+body.dashboard .habit-card .progress-container {
+  width: 100%;
+  background-color: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 4px 0;
+  height: 16px;
+  position: relative;
+}
+
+body.dashboard .habit-card .progress-bar {
+  height: 100%;
+  background-color: #638ECB;
+  transition: width 0.3s ease;
+}
+
+body.dashboard .habit-card .units-today {
+  font-size: 0.8rem;
+  color: #333;
+  margin: 4px 0;
+}
+
+/* In dark mode, adjust Units Done Today text to white */
+body.dashboard.dark-mode .habit-card .units-today {
+  color: #fff;
+}
+
+/* Position the Indicator at the Top-Right Corner */
+body.dashboard .habit-card .indicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: grey; /* Default; changes with .completed / .not-completed */
+}
+
+body.dashboard .habit-card .indicator.completed {
+  background-color: green;
+}
+
+body.dashboard .habit-card .indicator.not-completed {
+  background-color: red;
+}
+
+/* In-Card Control Buttons (Mark, Delete, etc.)
+   – Make these buttons bigger with ample spacing.
+*/
+body.dashboard .habit-card button {
+  margin: 0.75rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #638ECB;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+body.dashboard .habit-card button:hover {
+  background-color: #557ca3;
+}
+
+/* Revised Expand Button:
+   – Remove absolute positioning and display it as a separate
+     (at the bottom of the card) circular icon button.
+*/
+body.dashboard .habit-card .expand-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 1rem auto 0;
+  border: none;
+  border-radius: 50%;
+  background-color: #557ca3;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+body.dashboard .habit-card .expand-btn::before {
+  content: "▾";  /* Downward arrow icon */
+}
+
+/* Floating Add Habit Button for Dashboard (Light Mode) */
+body.dashboard .add-habit-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #638ECB;
+  color: #fff;
+  font-size: 2rem;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+body.dashboard .add-habit-btn:hover {
+  background-color: #557ca3;
+}
+
+/* ==========================================================================
+   DASHBOARD DARK MODE STYLES
+   ========================================================================== */
+html.dashboard.dark-mode,
+body.dashboard.dark-mode {
+  background-color: #111 !important;
+  background-attachment: fixed !important;
+  min-height: 100vh !important;
+  height: auto !important;
+}
+
+body.dashboard.dark-mode main {
+  background: transparent;
+}
+
+body.dashboard.dark-mode {
+  color: #fff;
+}
+
+body.dashboard.dark-mode h1,
+body.dashboard.dark-mode h2,
+body.dashboard.dark-mode h3,
+body.dashboard.dark-mode p {
+  color: #fff;
+}
+
+/* Dashboard Navbar in Dark Mode */
+body.dashboard.dark-mode .navbar {
+  background-color: #000 !important;
+  color: #fff;
+}
+
+body.dashboard.dark-mode .navbar .nav-links a,
+body.dashboard.dark-mode .navbar .nav-links button {
+  color: #638ECB;
+}
+
+body.dashboard.dark-mode .habit-card {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #638ECB;
+}
+
+body.dashboard.dark-mode .add-habit-btn {
+  background-color: #000;
+  border: 2px solid #638ECB;
+}
+
+/* Ensure Units Done Today text remains white in dark mode */
+body.dashboard.dark-mode .habit-card .units-today {
+  color: #fff;
+}
+
+/* Dashboard Pseudo-Background */
+body.dashboard::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e1e9f3;
+  z-index: -9999;
+}
+
+body.dashboard.dark-mode::before {
+  background-color: #111;
+}
+
+/* ==========================================================================
+   VISUAL THEME TOGGLE SWITCH
+   ========================================================================== */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-right: 1rem;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: background-color 0.4s;
+  border-radius: 34px;
+}
+
+.theme-switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: transform 0.4s;
+  border-radius: 50%;
+}
+
+.theme-switch input:checked + .slider {
+  background-color: #638ECB;
+}
+
+.theme-switch input:checked + .slider:before {
+  transform: translateX(26px);
+}
+ 
+/* ==========================================================================
+   GLOBAL DARK MODE OVERRIDES FOR NON-DASHBOARD PAGES (Repeat to ensure no blue strip)
+   ========================================================================== */
+html:not(.dashboard).dark-mode,
+body:not(.dashboard).dark-mode {
+  background-color: #111 !important;
+  color: #fff !important;
+}
+
+html:not(.dashboard).dark-mode header,
+html:not(.dashboard).dark-mode .navbar,
+body:not(.dashboard).dark-mode header,
+body:not(.dashboard).dark-mode .navbar,
+body:not(.dashboard).dark-mode .top-strip {
+  background-color: #111 !important;
+  color: #fff !important;
+}
+
+.icons{
+    height: 15px;
+    position:relative
+}
+/* For Habit Type Page in Dark Mode */
+.habit-type-container header,
+.habit-type-container .top-strip {
+  background-color: #111 !important;  /* Force a dark background */
+  color: #fff !important;
+}
+
+/* For Create Habit Page in Dark Mode */
+.create-habit-container header,
+.create-habit-container .top-strip {
+  background-color: #111 !important;  /* Force a dark background */
+  color: #fff !important;
+}
+
+
+
+
+body.dashboard .navbar .nav-links .nav-btn {
+  font-size: 1rem;
+  background-color: #fff;
+  color: #638ECB;
+  padding: 6px 12px;
+  /* border: 2px solid #fff; */
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dashboard .navbar .nav-links .nav-btn:hover {
+  /* background-color: #e6f0ff;
+  color: #638ECB; */
+
+  background-color: #fff;
+  color: #638ECB;
+  box-shadow: 0 4px 12px rgba(99, 142, 203, 0.2);
+  /* transform: translateY(-2px); */
+  transform: scale(1.1);
+}
+body.dark-mode .nav-btn {
+  background-color: #111;
+  color: #638ECB;
+  /* border: 2px solid #638ECB; */
+}
+
+body.dark-mode .nav-btn:hover {
+  background-color: #222;
+}
+
+
+
+
+
+
+
+#completed-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px dashed rgba(99, 142, 203, 0.5);
+}
+
+.completed-title {
+  text-align: center;
+  color: #638ECB;
+  margin-bottom: 1rem;
+}
+
+#completed-container .habit-card {
+  opacity: 0.8;
+  filter: grayscale(0.2);
+  position: relative;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.add-habit-btn:hover {
+  animation: spin 0.6s linear infinite;
+}
+.dashboard-divider {
+    width: 80%;
+    border: none;
+    height: 3px;
+    background: linear-gradient(to right, #8098e9, #297ce1);
+    margin: 30px auto;
+    border-radius: 5px;
+}
+
+.trophy-shelf {
+    text-align: center;
+    padding: 1rem;
+}
+
+.trophy-container {
+  display: flex;
+  justify-content: flex-start;  /* Align to the left */
+  flex-wrap: wrap;
+  gap: 10px;
+  /* margin-top: 1rem; */
+}
+
+
+
+
+/* Wrapper for each trophy */
+.trophy-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.trophy-wrapper:hover {
+  transform: scale(1.05);
+}
+
+/* Trophy image styling */
+.trophy-image {
+  width: 60px;
+  height: auto;
+  display: block;
+  transition: filter 0.3s ease, drop-shadow 0.3s ease;
+}
+
+.trophy-wrapper:hover .trophy-image {
+  filter: drop-shadow(0 0 8px gold) brightness(1.2);
+  cursor: pointer;
+}
+
+/* Tooltip styling: hidden by default */
+.trophy-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 100%;  /* Place tooltip above the trophy */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  margin-bottom: 5px;
+}
+
+/* Show tooltip on hover */
+.trophy-wrapper:hover .trophy-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Options panel for trophy actions; initially hidden and scaled down */
+.trophy-options {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+/* When active, the options panel is full size and visible */
+.trophy-options.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Styling for the buttons inside the options panel */
+.trophy-options button {
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f5af19;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+.trophy-options button:hover {
+  background-color: #fcb045;
+}
