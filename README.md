@@ -13,8 +13,8 @@ Miles is a lightweight, animation-rich habit tracker built with just HTML, CSS, 
 ## Tech Stack
 - HTML
 - CSS
-- JavaScript
-- 
+- JavaScript  
+
 That’s it. Fast, simple, and straight from the browser.
 
 > Start tracking your habits, one step at a time!
