@@ -5,3 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.href = 'login.html';
   }, 4800);
 });
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("service-worker.js").then(() => {
+      console.log("Service Worker registered!");
+    });
+  });
+}
