@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Habit - Miles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Local styles for the Create Habit page */
+    .create-habit-container {
+      max-width: 500px;
+      margin: 60px auto;
+      padding: 2rem;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .create-habit-container h1 {
+      color: #051094;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .create-habit-container form div {
+      margin-bottom: 1rem;
+    }
+    .create-habit-container form label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 700;
+    }
+    .create-habit-container form input,
+    .create-habit-container form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .create-habit-container form button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #638ECB;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .create-habit-container form button:hover {
+      background-color: #557ca3;
+    }
+  </style>
+</head>
+<body>
+  <div class="create-habit-container">
+    <h1>Create Habit</h1>
+    <form id="habitForm">
+      <!-- Common Field -->
+      <div>
+        <label for="habitName">Habit Name</label>
+        <input type="text" id="habitName" placeholder="Enter habit name" required />
+      </div>
+
+      <!-- Binary Habit Specific Field -->
+      <div id="binary-fields" style="display: none;">
+        <div>
+          <label for="totalTargetBinary">Total Target (days) [Optional]</label>
+          <input type="number" id="totalTargetBinary" min="1" placeholder="e.g., 30" />
+        </div>
+      </div>
+
+      <!-- Measurable Habit Specific Fields -->
+      <div id="measurable-fields" style="display: none;">
+        <div>
+          <label for="unitMeasurement">Unit of Measurement</label>
+          <input type="text" id="unitMeasurement" placeholder="e.g., pages, km, reps" />
+        </div>
+        <div>
+          <label for="dailyTarget">Daily Target [Optional]</label>
+          <input type="number" id="dailyTarget" min="1" placeholder="e.g., 20" />
+        </div>
+        <div>
+          <label for="totalTargetMeasurable">Total Target [Optional]</label>
+          <input type="number" id="totalTargetMeasurable" min="1" placeholder="e.g., 200" />
+        </div>
+      </div>
+
+      <!-- Extra Notes for Both Types -->
+      <div>
+        <label for="extraNotes">Extra Notes</label>
+        <textarea id="extraNotes" placeholder="Any additional details..."></textarea>
+      </div>
+      <button type="submit">Create Habit</button>
+    </form>
+  </div>
+
+  <script src="js/createHabit.js"></script>
+  <script src="js/theme.js"></script>
+
+</body>
+</html>

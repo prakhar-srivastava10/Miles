@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings - Miles</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* NAV BAR */
+    .navbar {
+      background-color: #638ECB;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 1rem;
+    }
+    /* If dark mode is active, make the navbar darker */
+    body.dark-mode .navbar {
+      background-color: #000;
+    }
+    /* SETTINGS PAGE CONTAINER */
+    .settings-container {
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    body.dark-mode .settings-container {
+      background: #222;
+      color: #fff;
+    }
+    /* FORM STYLING */
+    .settings-form {
+      margin: 1rem 0;
+    }
+    .settings-form label {
+      display: block;
+      margin: 0.5rem 0 0.25rem;
+    }
+    .settings-form input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    body.dark-mode .settings-form input {
+      background: #333;
+      border: 1px solid #555;
+      color: #fff;
+    }
+    .settings-form button {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      background-color: #638ECB;
+      color: #fff;
+      cursor: pointer;
+    }
+    .settings-form button:hover {
+      background-color: #557ca3;
+    }
+    /* Section Title Styling */
+    .section-title {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="settings-page">
+  <!-- Navigation Bar with Back and About links -->
+  <nav class="navbar">
+    <div>
+      <a href="dashboard.html">← Back to Dashboard</a>
+    </div>
+    <div>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <div class="settings-container">
+    <h1>Account Settings</h1>
+
+    <!-- Account Information Form -->
+    <div class="settings-form" id="accountForm">
+      <h2 class="section-title">Account Information</h2>
+      <label for="accName">Name</label>
+      <input type="text" id="accName" placeholder="Enter your name" />
+      <label for="accUsername">Username</label>
+      <input type="text" id="accUsername" placeholder="Enter your username" />
+
+      <button id="saveAccountBtn">Save Changes</button>
+    </div>
+
+    <!-- Change Password Form -->
+    <div class="settings-form" id="passwordForm">
+      <h2 class="section-title">Change Password</h2>
+      <label for="currentPwd">Current Password</label>
+      <input type="password" id="currentPwd" placeholder="Current password" />
+      <label for="newPwd">New Password</label>
+      <input type="password" id="newPwd" placeholder="New password" />
+      <label for="confirmPwd">Confirm New Password</label>
+      <input type="password" id="confirmPwd" placeholder="Confirm new password" />
+      <button id="changePwdBtn">Change Password</button>
+    </div>
+  </div>
+
+  <script src="js/settings.js"></script>
+</body>
+</html>

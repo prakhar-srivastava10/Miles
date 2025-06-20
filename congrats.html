@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎉 You Did It! – Miles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=MonteCarlo&display=swap" rel="stylesheet">
+
+
+  <style>
+    :root {
+      --bg: #0a0d1a;
+      --text: #eaf6ff;
+      --accent: #2979ff;
+      --bubble: rgba(255, 255, 255, 0.07);
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Nunito', sans-serif;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .mascot {
+      width: 180px;
+      animation: float 4s ease-in-out infinite alternate;
+      cursor: pointer;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+      cursor: pointer;
+    }
+
+    #quoteBox {
+      font-size: 1.1rem;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+    }
+
+    .progress-bar-wrapper {
+      width: 80%;
+      max-width: 500px;
+      height: 24px;
+      background: #1c1c1c;
+      border-radius: 20px;
+      margin: 2rem auto;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    #progress-bar {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), cyan);
+      transition: width 2s ease;
+    }
+
+    .burst-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      animation: explode 1.2s ease-out forwards;
+    }
+
+    @keyframes explode {
+      0% { transform: translate(0,0); opacity: 1; }
+      100% { transform: translate(var(--x), var(--y)); opacity: 0; }
+    }
+
+    .buttons {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .buttons button {
+      background: var(--accent);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1rem;
+      color: white;
+      min-height: 48px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .buttons button:hover {
+      background: #125ecc;
+    }
+
+    .floating-bubble {
+      position: absolute;
+      padding: 0.5rem 1rem;
+      background: var(--bubble);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      animation: floaty 4s ease-in-out infinite alternate;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    @keyframes floaty {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-8px); }
+    }
+
+    #secretFinal {
+      display: none;
+      background: rgba(255,255,255,0.1);
+      margin: 3rem auto;
+      max-width: 500px;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      border-left: 4px solid var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <img src="images/miles-happy-tears-face.png" alt="Miles the Mascot" class="mascot" id="mascot" />
+
+  <h1 id="title">🎉 You did it!</h1>
+  <div id="quoteBox">“Habits are just slow-motion superpowers.” – Miles</div>
+
+  <div class="progress-bar-wrapper" id="progressBarWrapper">
+    <div id="progress-bar"></div>
+  </div>
+
+  <div id="burstTarget" style="position: relative; height: 40px;"></div>
+
+  <div class="buttons">
+    <button onclick="location.href='dashboard.html'">🏠 Dashboard</button>
+    <button id="statsBtn">📊 View Stats</button>
+    <button id="certLink">🎓 Download Certificate</button>
+  </div>
+
+  <div class="floating-bubble" style="top: 20%; left: 10%;">“You stuck with it!”</div>
+  <div class="floating-bubble" style="top: 35%; right: 12%;">“Slow. Steady. Victorious.”</div>
+  <div class="floating-bubble" style="bottom: 20%; left: 25%;">“One shell at a time.”</div>
+  <div class="floating-bubble" style="top: 55%; right: 20%;">“That streak? Untouchable.”</div>
+  <div class="floating-bubble" style="bottom: 30%; right: 10%;">“Miles is sobbing (again).”</div>
+
+  <div id="secretFinal">💫 “True celebration lies not in what's shown... but in what remains.”</div>
+
+<script>
+  const bar = document.getElementById("progress-bar");
+  const wrapper = document.getElementById("progressBarWrapper");
+
+  document.addEventListener("DOMContentLoaded", () => {
+    spawnConfetti();
+    bar.style.width = "100%";
+
+    setTimeout(() => {
+      bar.style.transition = "width 0.4s ease";
+      bar.style.width = "110%";
+
+      const edgeX = wrapper.clientWidth;
+      const edgeY = wrapper.offsetHeight / 2;
+      for (let i = 0; i < 30; i++) {
+        const dot = document.createElement("div");
+        dot.className = "burst-dot";
+        dot.style.left = `${edgeX}px`;
+        dot.style.top = `${edgeY}px`;
+        dot.style.setProperty("--x", `${(Math.random() - 0.5) * 100}px`);
+        dot.style.setProperty("--y", `${(Math.random() -
+        0.5) * 100}px`);
+        wrapper.appendChild(dot);
+        setTimeout(() => dot.remove(), 1200);
+      }
+    }, 2100);
+  });
+
+  document.getElementById("mascot").onclick = () => spawnConfetti();
+
+  function spawnConfetti(count = 80) {
+    const canvas = document.createElement("canvas");
+    Object.assign(canvas.style, {
+      position: "fixed", top: 0, left: 0,
+      width: "100vw", height: "100vh",
+      zIndex: 9999, pointerEvents: "none"
+    });
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext("2d");
+
+    const particles = Array.from({ length: count }, () => ({
+      x: Math.random() * canvas.width,
+      y: -30,
+      r: Math.random() * 6 + 3,
+      dx: Math.random() * 2 - 1,
+      dy: Math.random() * 2 + 2,
+      color: `hsl(${Math.random() * 360}, 80%, 60%)`
+    }));
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.x += p.dx;
+        p.y += p.dy;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+      });
+      if (particles.some(p => p.y < canvas.height)) requestAnimationFrame(animate);
+      else setTimeout(() => canvas.remove(), 400);
+    }
+    animate();
+  }
+
+  const removable = new Set(["title", "quoteBox", "progressBarWrapper"]);
+  ["title", "quoteBox", "progressBarWrapper"].forEach(id => {
+    const el = document.getElementById(id);
+    el && el.addEventListener("click", () => vanish(id));
+  });
+
+  document.querySelectorAll(".floating-bubble").forEach((bubble, i) => {
+    const id = `bubble${i}`;
+    bubble.id = id;
+    removable.add(id);
+    bubble.onclick = () => vanish(id);
+  });
+
+  function vanish(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.transition = "opacity 0.4s ease";
+    el.style.opacity = 0;
+    setTimeout(() => el.remove(), 400);
+    removable.delete(id);
+    if (removable.size === 0) document.getElementById("secretFinal").style.display = "block";
+  }
+
+  document.getElementById("statsBtn").onclick = () => {
+    const habitName = new URLSearchParams(location.search).get("habitName") || "";
+    const habits = JSON.parse(localStorage.getItem("habits") || "[]");
+    const idx = habits.findIndex(h => h.name === habitName);
+    if (idx >= 0) location.href = `stat.html?index=${idx}`;
+    else alert("Couldn’t find stats—but Miles is still proud.");
+  };
+
+  document.getElementById("certLink").onclick = async () => {
+  await document.fonts.load("70px 'Alex Brush'");
+  await document.fonts.load("22px 'Libre Baskerville'");
+    const canvas = document.createElement("canvas");
+  canvas.width = 1200;
+  canvas.height = 800;
+  const ctx = canvas.getContext("2d");
+
+  // --- Background and border ---
+  ctx.fillStyle = "#f2f2df"; // new soft background
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.strokeStyle = "#4A90E2";
+  ctx.lineWidth = 10;
+  ctx.strokeRect(40, 40, canvas.width - 80, canvas.height - 80);
+
+  ctx.setLineDash([20, 10]);
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = "#AAAAAA";
+  ctx.strokeRect(70, 70, canvas.width - 140, canvas.height - 140);
+
+  // --- Title ---
+  
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#222";
+  ctx.font = "bold 70px 'Alex Brush', cursive";
+ctx.fillText("🏅 Shell-ebration of Excellence", canvas.width / 2, 130);
+
+  // --- Recipient ---
+  let fullName = "You";
+try {
+  const account = JSON.parse(localStorage.getItem("account"));
+  if (account?.name) fullName = account.name.trim();
+} catch {
+  // fallback name remains "You"
+}
+
+  ctx.font = "20px 'Libre Baskerville', serif";
+ctx.fillText("Presented to", canvas.width / 2, 180);
+ctx.font = "34px 'Libre Baskerville', serif";
+ctx.fillText(fullName, canvas.width / 2, 230);
+
+  // --- Fun message ---
+  const habitName = new URLSearchParams(location.search).get("habitName") || "a habit";
+  const today = new Date().toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+
+  ctx.font = "22px 'Libre Baskerville', serif";
+  ctx.fillText(`For absolutely conquering the habit "${habitName}"`, canvas.width / 2, 290);
+  ctx.font = "22px 'Libre Baskerville', serif";
+  ctx.fillText("with grit, grace, and enough determination to impress a tortoise.", canvas.width / 2, 330);
+  ctx.fillText(`Miles salutes you with happy tears and celebratory snacks.`, canvas.width / 2, 370);
+  ctx.font = "bold 26px 'Libre Baskerville', serif";
+  ctx.fillText("Congratulations on your Miles-stone!", canvas.width / 2, 440);
+
+  // --- Signature area ---
+  try {
+  const sig = new Image();
+  sig.src = "images/signature.png";
+  await new Promise(res => sig.onload = res);
+
+  // Maintain natural aspect ratio
+  const desiredWidth = 120; // Or tweak as needed
+  const ratio = sig.width / sig.height;
+  const adjustedHeight = desiredWidth / ratio;
+  const x = 860;
+  const y = 640;
+const designationY = canvas.height - 85;
+  const signatureY = designationY - adjustedHeight - 10; // 10px padding above the text
+ctx.drawImage(sig, 932, signatureY, desiredWidth, adjustedHeight);
+
+
+  ctx.font = "italic 18px 'Libre Baskerville', serif";
+  ctx.textAlign = "left";
+  
+ctx.fillText("Chief Encouragement Officer", 837, designationY);
+
+} catch {
+  ctx.font = "italic 18px 'Libre Baskerville', serif";
+  ctx.textAlign = "left";
+  ctx.fillText("Chief Encouragement Officer", 837, canvas.height - 85);
+}
+
+
+  // --- Date issued ---
+  ctx.textAlign = "left";
+  ctx.font = "18px 'Libre Baskerville', serif";
+  ctx.fillText(`Issued on ${today}`, 90, canvas.height - 85);
+
+  // --- Download ---
+  const link = document.createElement("a");
+  link.download = `Miles_Certificate_${habitName}.png`;
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+};
+
+</script>
+</body>
+</html>

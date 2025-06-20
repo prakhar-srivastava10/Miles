@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" class="dashboard">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About - Miles</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <style>
+    body {
+      transition: background-color 0.4s ease;
+    }
+
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .section {
+      margin: 3rem auto;
+      max-width: 900px;
+      padding: 2rem;
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .dark-mode .section {
+      background-color: rgba(34, 34, 34, 0.95);
+      color: #fff;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #638ECB;
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 20px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .cta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(99, 142, 203, 0.4);
+    }
+
+    .mascot-gallery img {
+      width: 140px;
+      margin: 1rem;
+      transition: transform 0.4s ease;
+      cursor: pointer;
+    }
+
+    .mascot-gallery img:hover {
+      transform: scale(1.1) rotate(4deg);
+    }
+
+    #book {
+      margin: 2rem auto;
+      max-width: 600px;
+    }
+
+    #page {
+      background-color: rgba(250, 250, 250, 0.85);
+      min-height: 200px;
+      padding: 2rem;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      transition: all 0.4s ease;
+    }
+
+    .dark-mode #page {
+      background-color: rgba(44, 44, 44, 0.9);
+      color: #fff;
+    }
+
+    .glow {
+      text-shadow: 0 0 8px rgba(99, 142, 203, 0.7);
+    }
+
+    .feature-list {
+      text-align: left;
+      margin-top: 2rem;
+    }
+
+    .feature-list li {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .interview {
+      text-align: left;
+      margin-top: 2rem;
+      font-style: italic;
+    }
+
+    .interview p {
+      margin-bottom: 1rem;
+    }
+
+    /* Add this to your existing <style> tag */
+@keyframes pageFlipOut {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.95) rotateY(-10deg); }
+}
+
+@keyframes pageFlipIn {
+  0% { opacity: 0; transform: scale(1.05) rotateY(5deg); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+
+
+.page-flip-out {
+  animation: pageFlipOut 0.3s forwards;
+}
+
+.page-flip-in {
+  animation: pageFlipIn 0.3s forwards;
+}
+
+  </style>
+</head>
+<body class="dashboard">
+  <header>
+    <nav class="navbar">
+      <a href="dashboard.html" class="logo">Miles</a>
+      <div class="nav-links">
+        <label class="theme-switch">
+          <input type="checkbox" id="toggleThemeCheckbox" />
+          <span class="slider"></span>
+        </label>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="about.html">About</a>
+        <button id="logoutBtn" class="nav-btn">Logout</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="glow">Welcome to the World of Miles 🐢</h1>
+    <p>More than a tracker—he's your shell-donning, habit-hustling, slow-club champion.</p>
+
+    <!-- Storybook -->
+    <section class="section" id="storybook">
+      <h2>📖 The Book of Miles</h2>
+      <div id="book">
+        <div id="page"></div>
+        <button id="nextPageBtn" class="cta">Next Page →</button>
+      </div>
+    </section>
+
+    <!-- Mascot Gallery -->
+    <section class="section">
+      <h2>🐢 Moodboard of a Tortoise</h2>
+      <div class="mascot-gallery">
+        <img src="images/happy-tortoise.png" alt="Happy Miles" title="You’re doing great!" />
+        <img src="images/cheering-tortoise.png" alt="Cheering Miles" title="Go you!" />
+        <img src="images/angry-tortoise.png" alt="Angry Miles" title="Log your habits, mortal." />
+        <img src="images/sad-tortoise.png" alt="Sad Miles" title="You skipped a day again 😢" />
+      </div>
+    </section>
+
+    <!-- Magical Info Scroll -->
+    <section class="section" id="magic-info">
+      <h2>What is Miles, Really?</h2>
+      <p class="glow">A sleek habit tracker wrapped in warmth, whimsy, and a tortoise’s wisdom.</p>
+      <ul class="feature-list">
+        <li><strong>Track Everything:</strong> Binary taps, measurable progress, daily and total targets—if it’s a habit, Miles tracks it.</li>
+        <li><strong>See the Story Unfold:</strong> Crystal-clear stats, calendar heatmaps, milestone alerts, and yes—celebration certificates.</li>
+        <li><strong>Tailored to You:</strong> Light mode, dark mode, responsive design, offline-first—and blazing fast on any device.</li>
+        <li><strong>Celebrate Every Win:</strong> Trophy shelf, congratulations page, animations, and visual feedback that makes progress feel good.</li>
+        <li><strong>Yours & Yours Alone:</strong> No servers, no snooping, no stress. Your data lives on your device—and nowhere else.</li>
+        <!-- <li><strong>Fast, Offline, Local:</strong> No data stolen. No servers harmed. It's all yours.</li> -->
+      </ul>
+    </section>
+
+    <!-- Developer Lore -->
+    <section class="section" id="dev-lore">
+      <h2>Behind the Shell: The Creators</h2>
+      <div class="interview">
+        <p>Miles started as a spark—an idea dreamt up by one human with a love for thoughtful design and delightful details.
+           With Microsoft Copilot by their side (and a few creative cameos from ChatGPT, Gemini, and Grok), that spark turned into a warm,
+            whimsical habit tracker powered by persistence, pixels, and a tortoise full of encouragement.</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <h2>🎉 Join the Slow Club</h2>
+      <p class="glow">If you believe in small wins, long roads, and tortoises with ambition—you're already one of us.</p>
+      <div class="cta" onclick="alert('Welcome to the Slow Club—we haven’t really started yet, but that’s kind of the point.')">Become a Member</div>
+    </section>
+  </main>
+
+  <script>
+    // Apply saved theme
+    document.addEventListener("DOMContentLoaded", function () {
+      const savedTheme = localStorage.getItem("theme");
+      const toggle = document.getElementById("toggleThemeCheckbox");
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        toggle.checked = true;
+      }
+
+      toggle.addEventListener("change", function () {
+        if (this.checked) {
+          document.body.classList.add("dark-mode");
+          localStorage.setItem("theme", "dark");
+        } else {
+          document.body.classList.remove("dark-mode");
+          localStorage.setItem("theme", "light");
+        }
+      });
+
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        localStorage.removeItem("loggedInUser");
+        window.location.href = "login.html";
+      });
+
+      // Storybook
+      const pages = [
+        "In a digital pond deep within the browser wilds, a tortoise named Miles dreamed - not of speed but purpose. He dreamed of structure and snacks.",
+                "Tired of forgotten goals and fleeting motivation, Miles built something steady: a dashboard of calm, where habits could grow one mark at a time.",
+        "He added calendars that twinkled, trophies that glistened, and a shell-deep belief that slow is not the opposite of strong. And yes—he made it beautiful.",
+        "Now, wanderers arrive from across the web to track their paths beside him. With each check-in, they join his slow and steady revolution. And you? You're part of it now. 💙🐢"
+      ];
+
+      let pageIndex = 0;
+      const page = document.getElementById("page");
+      const button = document.getElementById("nextPageBtn");
+
+      function updatePage() {
+        page.classList.remove("page-flip-in");
+page.classList.add("page-flip-out");
+
+setTimeout(() => {
+  page.innerHTML = `<p>${pages[pageIndex]}</p>`;
+  page.classList.remove("page-flip-out");
+  page.classList.add("page-flip-in");
+}, 800); // Duration of pageFlipOut
+
+        button.innerText = (pageIndex === pages.length - 1) ? "↺ Start Again" : "Next Page →";
+      }
+
+      button.addEventListener("click", () => {
+        pageIndex = (pageIndex + 1) % pages.length;
+        updatePage();
+      });
+
+      updatePage();
+
+      // ScrollReveal animations
+      ScrollReveal().reveal('.section', {
+        duration: 1000,
+        origin: 'bottom',
+        distance: '50px',
+        easing: 'ease-out',
+        reset: false
+      });
+    });
+  </script>
+</body>
+</html>

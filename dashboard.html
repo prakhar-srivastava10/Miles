@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" class="dashboard">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard - Miles</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body class="dashboard">
+    <header>
+      <nav class="navbar">
+        <a href="dashboard.html" class="logo">Miles</a>
+        <div class="nav-links">
+          <!-- Visual theme toggle switch -->
+          <label class="theme-switch">
+            <input type="checkbox" id="toggleThemeCheckbox">
+            <span class="slider"></span>
+          </label>
+          <a href="settings.html">Settings</a>
+          <a href="about.html">About</a>
+          <button id="logoutBtn" class="nav-btn">Logout</button>
+
+        </div>
+      </nav>
+    </header>
+    <main>
+      <!-- Container for habit cards -->
+      <section id="habit-container">
+        <!-- Habit cards will be injected here dynamically -->
+      </section>
+      <!-- Floating button to add a new habit -->
+      <button id="addHabitBtn" class="add-habit-btn">+</button>
+   
+   <!-- Trophy Shelf Section -->
+<hr class="dashboard-divider" />
+<div id="trophy-shelf" class="trophy-shelf">
+  <!-- <h2>🏆 Trophy Shelf</h2> -->
+  <div id="trophy-container" class="trophy-container">
+    <!-- A trophy image will be added for each completed habit -->
+  </div>
+</div>
+   
+    </main>
+
+    
+
+
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
