@@ -8,7 +8,8 @@ function getLocalDateString(date = new Date()) {
 document.addEventListener("DOMContentLoaded", function () {
   // --- Check login status ---
   
-  if (!localStorage.getItem("loggedInUser")) {
+  if (localStorage.getItem("isLoggedIn") !== "true") {
+
     window.location.href = "login.html";
     return;
   }
@@ -43,7 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("logoutBtn").addEventListener("click", function (e) {
   e.preventDefault();
   localStorage.removeItem("loggedInUser");
-  window.location.href = "login.html";
+localStorage.removeItem("isLoggedIn");
+window.location.href = "login.html";
+
 });
 
 
