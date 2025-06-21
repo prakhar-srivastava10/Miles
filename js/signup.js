@@ -24,6 +24,8 @@ document.getElementById("signupForm").addEventListener("submit", function(e) {
 
   // Mark the user as logged in so that the session persists across browser sessions
   localStorage.setItem("loggedInUser", username);
+  localStorage.setItem("isLoggedIn", "true");
+
 
   // Redirect to the dashboard page
   window.location.href = "dashboard.html";
