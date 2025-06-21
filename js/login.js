@@ -14,6 +14,8 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     // we assume the password check passes if the account exists.
     // Save login state in localStorage so the user remains logged in across sessions.
     localStorage.setItem('loggedInUser', username);
+    localStorage.setItem('isLoggedIn', 'true');
+
     // Redirect to dashboard (update the filename as you develop the dashboard page)
     window.location.href = 'dashboard.html';
   } else {
