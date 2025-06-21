@@ -24,7 +24,12 @@ self.addEventListener("install", event => {
         "/js/signup.js",
         "/js/theme.js",
         "/images/192.jpg",
-        "/images/512.jpg"
+        "/images/512.jpg",
+        "/images/trophy.png",
+        "/images/deleteicon.png",
+        "/images/downArrow.png",
+        "/images/miles-happy-tears-face.png",
+        "/images/upArrow.png"
       ]);
     })
   );
